@@ -1,4 +1,4 @@
-# Sp5rals
+# SP5rals
 A P5.js representation of M.C. Escher's artwork "Spirals"
 
 ![P5.js representation](https://github.com/CaptainChameleon/sp5rals/blob/main/Sp5rals.gif)
