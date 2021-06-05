@@ -21,8 +21,8 @@ function draw() {
         image(background, 0, 0, 640.5, 525);
     pop();
     
-    translate(-8,-42,-25);
-    rotateX(-0.35);
+    translate(-12,-42,-45);
+    rotateX(-0.45);
     rotateY(PI/4.7);
     //noStroke();
     for (let i = 0; i < 4; i++) {
@@ -35,7 +35,7 @@ function draw() {
 function generateStripe(gap, innerRotation) {
     let majorRadius = 100;
     let minusRadius;
-    let elongation = 21;
+    let elongation = 18;
     let center;
     let direction;
     let point;
@@ -46,20 +46,20 @@ function generateStripe(gap, innerRotation) {
 
     beginShape(TRIANGLE_STRIP);
 
-    while(elongation*angle <= 1.44*TWO_PI) { // DESFASE
-        point = [majorRadius,0,0];
+    while(elongation*angle <= 1.44*TWO_PI) {
+        point = [1,0,0];
         center = math.rotate([majorRadius, 0, 0], -elongation*angle,[0,1,0]);
         direction = math.rotate([0, 0, 1], -elongation*angle,[0,1,0]);
         
         //minorRadius =100*pow(angle, 1); // TIPO DE ESPIRAL
-        minusRadius = 90*pow(angle, 1); // TIPO DE ESPIRAL
+        minusRadius = 90 * angle; // TIPO DE ESPIRAL
 
-        point = math.dotMultiply(math.dotDivide(point, math.norm(point)), -minusRadius);
         point = math.rotate(point, 90*(angle + gap + innerRotation), [0,0,1]); // ROTACION
         point = math.rotate(point, -elongation*angle, [0,1,0]);
+        point = math.dotMultiply(math.dotDivide(point, math.norm(point)), -minusRadius);
         point = math.add(center, point);
 
-        stripeSection =  math.dotMultiply(math.dotDivide(direction, math.norm(direction)), minusRadius/PI);
+        stripeSection =  math.dotMultiply(math.dotDivide(direction, math.norm(direction)), minusRadius/(1.8*PI));
         vertex1 = math.add(point, stripeSection);
         vertex2 = math.add(point, math.rotate(stripeSection, -PI, point));
         //let vertex2 = math.add(pointPos, math.dotMultiply(-1,stripeSection));
