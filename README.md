@@ -31,7 +31,9 @@ Once we have a better idea of the type of spiral, and how it travels through the
 
 By computing the cross product between this vector and the position we obtain a new vector whose key characteristic is that it's ortogonal to both the direction and the point position. This new vector represents the position of one of those vertex that would conform the stripe section, and by rotating it using the point position as a rotation axis, we can generate the second needed vertex. We can also customize the stripe width via the module of this vector and the rotation angle over the point position.
 
-## Multiple Stripes
+![First Stripe](https://github.com/CaptainChameleon/SP5rals/blob/5ddce9e2762e2a467cad511c13d53a6088ce6dc4/First%20stripe.jpg)
+
+## Multiple Stripes & Animation
 
 ## The result
-![P5.js representation](https://github.com/CaptainChameleon/sp5rals/blob/main/SP5rals.gif)
+![P5.js representation](https://github.com/CaptainChameleon/SP5rals/blob/5ddce9e2762e2a467cad511c13d53a6088ce6dc4/SP5rals.gif)
