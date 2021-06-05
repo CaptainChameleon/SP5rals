@@ -24,7 +24,9 @@ The value of the minor radius is calculated with the equation of the correspondi
 
 Where `r` is the radius and `theta` the angle. This equation also describes the family of hyperbolic `c = -1`, lituus `c = -2`, and Fermat's spirals `c = 2`; while the regular arithmetic spiral appears when `c = 1`. The other parameters meassure the center's distance to the origin `a`, and the distance between each loop `b`. 
 
-After serveral tries, the following equation appeared to be the closest to resemble the ones used in the artwork: `r = 90 * theta`
+After serveral tries, the following equation appeared to be the closest to resemble the ones used in the artwork: 
+
+`r = 90 * theta`
 
 ## A 3D Stripe
 Once we have a better idea of the type of spiral, and how it travels through the space, we need to generate a 3D mesh so we can reproduce the twisted stripes of the artwork. In order to achieve it, we need more points. Each point we calculated in the previous step was in fact in the middle of such stripe, for creating a 3D mesh we need to add them 2 by 2. For this, we'll introduce an additional vector: the direction. This vector represents the direction the spiral is following at each point.
@@ -34,6 +36,11 @@ By computing the cross product between this vector and the position we obtain a 
 ![First Stripe](https://github.com/CaptainChameleon/SP5rals/blob/5ddce9e2762e2a467cad511c13d53a6088ce6dc4/First%20stripe.jpg)
 
 ## Multiple Stripes & Animation
+Now that we have our first stripe, generating the rest shoud be a piece of cake. If we observe the artwork further, we can notice that there are 4 stripes in total, and they all finish their rotation at the same point in the path. The only difference between them is that they are out of phase. We can reproduce this by adding a new parameter: the gap. This parameter will be used when we rotate each point position over the z-axis, by adding it to the rotation angle we can produce the out of phase effect.
+
+This is also the way we can animate the stripes, by creating another parameter that will be added alongside the gap. If we link this new parameter to the scene drawing iterations, we can make it look like the stripes are continuously being generated and revolving around themselves.
 
 ## The result
+Finally, after playing with the camera angles, creating a similar background with GIMP, and [cheating a bit](https://codebeautify.org/minify-js) with the total characters used, here's the result:
+
 ![P5.js representation](https://github.com/CaptainChameleon/SP5rals/blob/5ddce9e2762e2a467cad511c13d53a6088ce6dc4/SP5rals.gif)
