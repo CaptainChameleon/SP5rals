@@ -50,3 +50,10 @@ Finally, after playing with the camera angles, the lightning, creating a similar
 Now that we have something remotely close to the original work, let's try and see if we can improve it.
 
 ### Shaders
+
+#### Fragment Shader
+
+##### The basics
+
+##### The result
+![Fragment shader applied to webcam](https://github.com/CaptainChameleon/SP5rals/blob/26127f7ff7ffebe8b47753946ad84ec7a4f97aa3/shaders/EscherFragment/result.gif)
