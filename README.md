@@ -50,10 +50,17 @@ Finally, after playing with the camera angles, the lightning, creating a similar
 Now that we have something remotely close to the original work, let's try and see if we can improve it.
 
 ### Shaders
+If we look closely to Escher's work an interesting lightning effect would be noticed. The spiral surface where the light hits directly is covered with little dots, while darker zones are covered by a grid of black squares. In between we can see how those squares shrink in size as we travel to brighter patches of the surface.
+
+This effect is particularly suitable to be implemented with a shader.
 
 #### Fragment Shader
+Initially, we can try and replicate that grid effect with a simple fragment shader.
 
 ##### The basics
+To draw a square, we can simply connote a particular area and define a color checking if the fragment's coordinates are inside. The step function comes very handy for this endeavo, as it returns 0.0 or 1.0 if a value is less than or higher than an edge. By multiplying all checks, we ensure we always get a white color in case some failed, or a black in case all checks passed. Achieving a grid is just a matter of checking all positions where there could be a square.
+
+The size of the square is as simple as checking the mean brightness of the image in the area at hand. In this case we are going to use image feed from a camera.
 
 ##### The result
 ![Fragment shader applied to webcam](https://github.com/CaptainChameleon/SP5rals/blob/26127f7ff7ffebe8b47753946ad84ec7a4f97aa3/shaders/EscherFragment/result.gif)
