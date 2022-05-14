@@ -63,4 +63,15 @@ To draw a square, we can simply connote a particular area and define a color che
 The size of the square is as simple as checking the mean brightness of the image in the area at hand. In this case we are going to use image feed from a camera.
 
 ##### The result
-![Fragment shader applied to webcam](https://github.com/CaptainChameleon/SP5rals/blob/26127f7ff7ffebe8b47753946ad84ec7a4f97aa3/shaders/EscherFragment/result.gif)
+![Fragment shader applied to webcam](https://github.com/CaptainChameleon/SP5rals/blob/2d39781e534b98d2306e0b896bfc084d96a68434/shaders/FragmentTest/result.gif)
+
+#### Vertex Shader
+Now we're ready to take our grid effect outside screen space to a 3D geometry, and we'll need a vertex shader for that.
+
+##### The basics
+We'll try to translate our grid to a sphere. Fortunately, switching from screen coordinates to world coordinates is trivial... thanks to Processing linking under the hood all necessary geometry information such as vertex normals, light direction and texture coordinates. We'll just switch `gl_FragCoord` for `texCoord` which will be passed from our vertex shader to our fragment shader using x and y coordinates of the `gl_Position` of each vertex.
+
+In our previos example we used the average brightness of each fragment pixels to determine the corresponding square's size. In this case we'll need to process the directional light of our scene. We'll use light normal information provided by Processing in an uniform. Fragment brightness can be calculated as a dot product between vertex normal and light normal.
+
+##### The result
+![Vertex and Fragment shader applied to sphere](https://github.com/CaptainChameleon/SP5rals/blob/2d39781e534b98d2306e0b896bfc084d96a68434/shaders/VertexTest/result.gif)
